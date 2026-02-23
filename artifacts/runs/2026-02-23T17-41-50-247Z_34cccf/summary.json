@@ -1,0 +1,339 @@
+{
+  "runId": "2026-02-23T17-41-50-247Z_34cccf",
+  "createdAt": "2026-02-23T17:42:12.045Z",
+  "results": [
+    {
+      "pairName": "sample_file_1",
+      "baselineFileName": "sample_file_1_Baseline.pdf",
+      "outputFileName": "sample_file_1_Output.pdf",
+      "overall": "FAIL",
+      "baselinePageCount": 24,
+      "outputPageCount": 24,
+      "pagesWithDifferences": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "pageDiffs": [
+        {
+          "pageNumber": 1,
+          "diffPixels": 1361,
+          "diffPercent": 0.0647,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-001.png",
+          "outputImage": "sample_file_1/output/page-001.png",
+          "diffImage": "sample_file_1/diff/page-001-diff.png"
+        },
+        {
+          "pageNumber": 2,
+          "diffPixels": 1928,
+          "diffPercent": 0.0916,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-002.png",
+          "outputImage": "sample_file_1/output/page-002.png",
+          "diffImage": "sample_file_1/diff/page-002-diff.png"
+        },
+        {
+          "pageNumber": 3,
+          "diffPixels": 485,
+          "diffPercent": 0.0231,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-003.png",
+          "outputImage": "sample_file_1/output/page-003.png",
+          "diffImage": "sample_file_1/diff/page-003-diff.png"
+        },
+        {
+          "pageNumber": 4,
+          "diffPixels": 403,
+          "diffPercent": 0.0192,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-004.png",
+          "outputImage": "sample_file_1/output/page-004.png",
+          "diffImage": "sample_file_1/diff/page-004-diff.png"
+        },
+        {
+          "pageNumber": 5,
+          "diffPixels": 11364,
+          "diffPercent": 0.5402,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-005.png",
+          "outputImage": "sample_file_1/output/page-005.png",
+          "diffImage": "sample_file_1/diff/page-005-diff.png"
+        },
+        {
+          "pageNumber": 6,
+          "diffPixels": 7129,
+          "diffPercent": 0.3389,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-006.png",
+          "outputImage": "sample_file_1/output/page-006.png",
+          "diffImage": "sample_file_1/diff/page-006-diff.png"
+        },
+        {
+          "pageNumber": 7,
+          "diffPixels": 10616,
+          "diffPercent": 0.5046,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-007.png",
+          "outputImage": "sample_file_1/output/page-007.png",
+          "diffImage": "sample_file_1/diff/page-007-diff.png"
+        },
+        {
+          "pageNumber": 8,
+          "diffPixels": 7529,
+          "diffPercent": 0.3579,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-008.png",
+          "outputImage": "sample_file_1/output/page-008.png",
+          "diffImage": "sample_file_1/diff/page-008-diff.png"
+        },
+        {
+          "pageNumber": 9,
+          "diffPixels": 4128,
+          "diffPercent": 0.1962,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-009.png",
+          "outputImage": "sample_file_1/output/page-009.png",
+          "diffImage": "sample_file_1/diff/page-009-diff.png"
+        },
+        {
+          "pageNumber": 10,
+          "diffPixels": 4158,
+          "diffPercent": 0.1976,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-010.png",
+          "outputImage": "sample_file_1/output/page-010.png",
+          "diffImage": "sample_file_1/diff/page-010-diff.png"
+        },
+        {
+          "pageNumber": 11,
+          "diffPixels": 4129,
+          "diffPercent": 0.1963,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-011.png",
+          "outputImage": "sample_file_1/output/page-011.png",
+          "diffImage": "sample_file_1/diff/page-011-diff.png"
+        },
+        {
+          "pageNumber": 12,
+          "diffPixels": 4163,
+          "diffPercent": 0.1979,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-012.png",
+          "outputImage": "sample_file_1/output/page-012.png",
+          "diffImage": "sample_file_1/diff/page-012-diff.png"
+        },
+        {
+          "pageNumber": 13,
+          "diffPixels": 4107,
+          "diffPercent": 0.1952,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-013.png",
+          "outputImage": "sample_file_1/output/page-013.png",
+          "diffImage": "sample_file_1/diff/page-013-diff.png"
+        },
+        {
+          "pageNumber": 14,
+          "diffPixels": 4191,
+          "diffPercent": 0.1992,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-014.png",
+          "outputImage": "sample_file_1/output/page-014.png",
+          "diffImage": "sample_file_1/diff/page-014-diff.png"
+        },
+        {
+          "pageNumber": 15,
+          "diffPixels": 4133,
+          "diffPercent": 0.1965,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-015.png",
+          "outputImage": "sample_file_1/output/page-015.png",
+          "diffImage": "sample_file_1/diff/page-015-diff.png"
+        },
+        {
+          "pageNumber": 16,
+          "diffPixels": 4280,
+          "diffPercent": 0.2034,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-016.png",
+          "outputImage": "sample_file_1/output/page-016.png",
+          "diffImage": "sample_file_1/diff/page-016-diff.png"
+        },
+        {
+          "pageNumber": 17,
+          "diffPixels": 1256,
+          "diffPercent": 0.0597,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-017.png",
+          "outputImage": "sample_file_1/output/page-017.png",
+          "diffImage": "sample_file_1/diff/page-017-diff.png"
+        },
+        {
+          "pageNumber": 18,
+          "diffPixels": 1173,
+          "diffPercent": 0.0558,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-018.png",
+          "outputImage": "sample_file_1/output/page-018.png",
+          "diffImage": "sample_file_1/diff/page-018-diff.png"
+        },
+        {
+          "pageNumber": 19,
+          "diffPixels": 1295,
+          "diffPercent": 0.0616,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-019.png",
+          "outputImage": "sample_file_1/output/page-019.png",
+          "diffImage": "sample_file_1/diff/page-019-diff.png"
+        },
+        {
+          "pageNumber": 20,
+          "diffPixels": 1371,
+          "diffPercent": 0.0652,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-020.png",
+          "outputImage": "sample_file_1/output/page-020.png",
+          "diffImage": "sample_file_1/diff/page-020-diff.png"
+        },
+        {
+          "pageNumber": 21,
+          "diffPixels": 1267,
+          "diffPercent": 0.0602,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-021.png",
+          "outputImage": "sample_file_1/output/page-021.png",
+          "diffImage": "sample_file_1/diff/page-021-diff.png"
+        },
+        {
+          "pageNumber": 22,
+          "diffPixels": 1299,
+          "diffPercent": 0.0617,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-022.png",
+          "outputImage": "sample_file_1/output/page-022.png",
+          "diffImage": "sample_file_1/diff/page-022-diff.png"
+        },
+        {
+          "pageNumber": 23,
+          "diffPixels": 1279,
+          "diffPercent": 0.0608,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-023.png",
+          "outputImage": "sample_file_1/output/page-023.png",
+          "diffImage": "sample_file_1/diff/page-023-diff.png"
+        },
+        {
+          "pageNumber": 24,
+          "diffPixels": 3509,
+          "diffPercent": 0.1668,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_1/baseline/page-024.png",
+          "outputImage": "sample_file_1/output/page-024.png",
+          "diffImage": "sample_file_1/diff/page-024-diff.png"
+        }
+      ],
+      "rotationMismatches": [],
+      "bookmarkDiff": {
+        "baselineCount": 22,
+        "outputCount": 21,
+        "missingTitles": [
+          "IN-TEXT TABLES AND FIGURES",
+          "Appendix 1. Study Details"
+        ],
+        "extraTitles": [
+          "Appendix 1. Study Details"
+        ]
+      }
+    },
+    {
+      "pairName": "sample_file_2",
+      "baselineFileName": "sample_file_2_Baseline.pdf",
+      "outputFileName": "sample_file_2_Output.pdf",
+      "overall": "FAIL",
+      "baselinePageCount": 5,
+      "outputPageCount": 6,
+      "pagesWithDifferences": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pageDiffs": [
+        {
+          "pageNumber": 1,
+          "diffPixels": 26849,
+          "diffPercent": 0.9862,
+          "sameDimensions": false,
+          "baselineImage": "sample_file_2/baseline/page-001.png",
+          "outputImage": "sample_file_2/output/page-001.png",
+          "diffImage": "sample_file_2/diff/page-001-diff.png"
+        },
+        {
+          "pageNumber": 2,
+          "diffPixels": 38570,
+          "diffPercent": 0.9167,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_2/baseline/page-002.png",
+          "outputImage": "sample_file_2/output/page-002.png",
+          "diffImage": "sample_file_2/diff/page-002-diff.png"
+        },
+        {
+          "pageNumber": 3,
+          "diffPixels": 42639,
+          "diffPercent": 1.0134,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_2/baseline/page-003.png",
+          "outputImage": "sample_file_2/output/page-003.png",
+          "diffImage": "sample_file_2/diff/page-003-diff.png"
+        },
+        {
+          "pageNumber": 4,
+          "diffPixels": 56579,
+          "diffPercent": 1.3447,
+          "sameDimensions": true,
+          "baselineImage": "sample_file_2/baseline/page-004.png",
+          "outputImage": "sample_file_2/output/page-004.png",
+          "diffImage": "sample_file_2/diff/page-004-diff.png"
+        },
+        {
+          "pageNumber": 5,
+          "diffPixels": 76614,
+          "diffPercent": 2.8141,
+          "sameDimensions": false,
+          "baselineImage": "sample_file_2/baseline/page-005.png",
+          "outputImage": "sample_file_2/output/page-005.png",
+          "diffImage": "sample_file_2/diff/page-005-diff.png"
+        }
+      ],
+      "rotationMismatches": [],
+      "bookmarkDiff": {
+        "baselineCount": 1,
+        "outputCount": 1,
+        "missingTitles": [],
+        "extraTitles": []
+      }
+    }
+  ]
+}

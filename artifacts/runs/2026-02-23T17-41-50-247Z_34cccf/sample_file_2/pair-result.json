@@ -1,0 +1,69 @@
+{
+  "pairName": "sample_file_2",
+  "baselineFileName": "sample_file_2_Baseline.pdf",
+  "outputFileName": "sample_file_2_Output.pdf",
+  "overall": "FAIL",
+  "baselinePageCount": 5,
+  "outputPageCount": 6,
+  "pagesWithDifferences": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "pageDiffs": [
+    {
+      "pageNumber": 1,
+      "diffPixels": 26849,
+      "diffPercent": 0.9862,
+      "sameDimensions": false,
+      "baselineImage": "sample_file_2/baseline/page-001.png",
+      "outputImage": "sample_file_2/output/page-001.png",
+      "diffImage": "sample_file_2/diff/page-001-diff.png"
+    },
+    {
+      "pageNumber": 2,
+      "diffPixels": 38570,
+      "diffPercent": 0.9167,
+      "sameDimensions": true,
+      "baselineImage": "sample_file_2/baseline/page-002.png",
+      "outputImage": "sample_file_2/output/page-002.png",
+      "diffImage": "sample_file_2/diff/page-002-diff.png"
+    },
+    {
+      "pageNumber": 3,
+      "diffPixels": 42639,
+      "diffPercent": 1.0134,
+      "sameDimensions": true,
+      "baselineImage": "sample_file_2/baseline/page-003.png",
+      "outputImage": "sample_file_2/output/page-003.png",
+      "diffImage": "sample_file_2/diff/page-003-diff.png"
+    },
+    {
+      "pageNumber": 4,
+      "diffPixels": 56579,
+      "diffPercent": 1.3447,
+      "sameDimensions": true,
+      "baselineImage": "sample_file_2/baseline/page-004.png",
+      "outputImage": "sample_file_2/output/page-004.png",
+      "diffImage": "sample_file_2/diff/page-004-diff.png"
+    },
+    {
+      "pageNumber": 5,
+      "diffPixels": 76614,
+      "diffPercent": 2.8141,
+      "sameDimensions": false,
+      "baselineImage": "sample_file_2/baseline/page-005.png",
+      "outputImage": "sample_file_2/output/page-005.png",
+      "diffImage": "sample_file_2/diff/page-005-diff.png"
+    }
+  ],
+  "rotationMismatches": [],
+  "bookmarkDiff": {
+    "baselineCount": 1,
+    "outputCount": 1,
+    "missingTitles": [],
+    "extraTitles": []
+  }
+}

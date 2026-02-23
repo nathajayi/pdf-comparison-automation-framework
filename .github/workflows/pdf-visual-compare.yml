@@ -1,0 +1,45 @@
+name: PDF Visual Compare
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pdf-compare:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install system deps (Poppler)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          pdftoppm -v
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright (Chromium only)
+        run: npx playwright install --with-deps chromium
+
+      - name: Run PDF visual comparison
+        run: npx playwright test tests/pdf-visual/pdf-compare.spec.ts
+
+      - name: Upload HTML report + run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-visual-artifacts
+          path: |
+            artifacts/runs
+            playwright-report
+          if-no-files-found: warn

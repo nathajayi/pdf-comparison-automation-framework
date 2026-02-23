@@ -1,0 +1,612 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PDF Visual Compare Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th, td { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
+    th { background: #f5f5f5; text-align: left; }
+    .pass { color: #0a7a0a; }
+    .fail { color: #b00020; }
+    .muted { color: #666; font-size: 13px; margin-top: 6px; }
+    .pair { margin-top: 28px; padding-top: 18px; border-top: 2px solid #eee; }
+    .thumbs { display: flex; gap: 16px; margin: 12px 0; flex-wrap: wrap; }
+    .thumbs a { text-decoration: none; color: inherit; width: 280px; }
+    .thumbs img { width: 100%; border: 1px solid #ddd; }
+    .cap { font-size: 12px; color: #333; margin-top: 4px; }
+    .page { margin-top: 14px; }
+    .meta { margin-top: 10px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>PDF Visual Compare Report</h1>
+  <div class="muted">Run: 2026-02-23T17-41-50-247Z_34cccf • Created: 2026-02-23T17:42:12.045Z</div>
+
+  <h2>Summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Pair</th>
+        <th>Baseline</th>
+        <th>Output</th>
+        <th>Result</th>
+        <th>Page Count</th>
+        <th>Pages with Diffs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>sample_file_1</td>
+        <td>sample_file_1_Baseline.pdf</td>
+        <td>sample_file_1_Output.pdf</td>
+        <td><b class="fail">FAIL</b></td>
+        <td>24 vs 24</td>
+        <td>1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24</td>
+      </tr>
+    
+      <tr>
+        <td>sample_file_2</td>
+        <td>sample_file_2_Baseline.pdf</td>
+        <td>sample_file_2_Output.pdf</td>
+        <td><b class="fail">FAIL</b></td>
+        <td>5 vs 6</td>
+        <td>1, 2, 3, 4, 5</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+      <section class="pair">
+        <h3>sample_file_1 — <span class="fail">FAIL</span></h3>
+        <div class="muted">sample_file_1_Baseline.pdf vs sample_file_1_Output.pdf</div>
+        
+      <div class="meta">
+        <div><b>Rotation mismatches:</b> None</div>
+        <div><b>Bookmark diff:</b> baseline=22, output=21,
+          missingTitles=2, extraTitles=1
+        </div>
+      </div>
+    
+        
+        <div class="page">
+          <h4>Page 1 — diff: 1361 px (0.0647%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-001.png" target="_blank">
+              <img src="sample_file_1/baseline/page-001.png" alt="Baseline page 1">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-001.png" target="_blank">
+              <img src="sample_file_1/output/page-001.png" alt="Output page 1">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-001-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-001-diff.png" alt="Diff page 1">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 2 — diff: 1928 px (0.0916%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-002.png" target="_blank">
+              <img src="sample_file_1/baseline/page-002.png" alt="Baseline page 2">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-002.png" target="_blank">
+              <img src="sample_file_1/output/page-002.png" alt="Output page 2">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-002-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-002-diff.png" alt="Diff page 2">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 3 — diff: 485 px (0.0231%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-003.png" target="_blank">
+              <img src="sample_file_1/baseline/page-003.png" alt="Baseline page 3">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-003.png" target="_blank">
+              <img src="sample_file_1/output/page-003.png" alt="Output page 3">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-003-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-003-diff.png" alt="Diff page 3">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 4 — diff: 403 px (0.0192%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-004.png" target="_blank">
+              <img src="sample_file_1/baseline/page-004.png" alt="Baseline page 4">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-004.png" target="_blank">
+              <img src="sample_file_1/output/page-004.png" alt="Output page 4">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-004-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-004-diff.png" alt="Diff page 4">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 5 — diff: 11364 px (0.5402%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-005.png" target="_blank">
+              <img src="sample_file_1/baseline/page-005.png" alt="Baseline page 5">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-005.png" target="_blank">
+              <img src="sample_file_1/output/page-005.png" alt="Output page 5">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-005-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-005-diff.png" alt="Diff page 5">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 6 — diff: 7129 px (0.3389%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-006.png" target="_blank">
+              <img src="sample_file_1/baseline/page-006.png" alt="Baseline page 6">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-006.png" target="_blank">
+              <img src="sample_file_1/output/page-006.png" alt="Output page 6">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-006-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-006-diff.png" alt="Diff page 6">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 7 — diff: 10616 px (0.5046%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-007.png" target="_blank">
+              <img src="sample_file_1/baseline/page-007.png" alt="Baseline page 7">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-007.png" target="_blank">
+              <img src="sample_file_1/output/page-007.png" alt="Output page 7">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-007-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-007-diff.png" alt="Diff page 7">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 8 — diff: 7529 px (0.3579%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-008.png" target="_blank">
+              <img src="sample_file_1/baseline/page-008.png" alt="Baseline page 8">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-008.png" target="_blank">
+              <img src="sample_file_1/output/page-008.png" alt="Output page 8">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-008-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-008-diff.png" alt="Diff page 8">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 9 — diff: 4128 px (0.1962%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-009.png" target="_blank">
+              <img src="sample_file_1/baseline/page-009.png" alt="Baseline page 9">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-009.png" target="_blank">
+              <img src="sample_file_1/output/page-009.png" alt="Output page 9">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-009-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-009-diff.png" alt="Diff page 9">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 10 — diff: 4158 px (0.1976%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-010.png" target="_blank">
+              <img src="sample_file_1/baseline/page-010.png" alt="Baseline page 10">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-010.png" target="_blank">
+              <img src="sample_file_1/output/page-010.png" alt="Output page 10">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-010-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-010-diff.png" alt="Diff page 10">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 11 — diff: 4129 px (0.1963%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-011.png" target="_blank">
+              <img src="sample_file_1/baseline/page-011.png" alt="Baseline page 11">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-011.png" target="_blank">
+              <img src="sample_file_1/output/page-011.png" alt="Output page 11">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-011-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-011-diff.png" alt="Diff page 11">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 12 — diff: 4163 px (0.1979%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-012.png" target="_blank">
+              <img src="sample_file_1/baseline/page-012.png" alt="Baseline page 12">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-012.png" target="_blank">
+              <img src="sample_file_1/output/page-012.png" alt="Output page 12">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-012-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-012-diff.png" alt="Diff page 12">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 13 — diff: 4107 px (0.1952%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-013.png" target="_blank">
+              <img src="sample_file_1/baseline/page-013.png" alt="Baseline page 13">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-013.png" target="_blank">
+              <img src="sample_file_1/output/page-013.png" alt="Output page 13">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-013-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-013-diff.png" alt="Diff page 13">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 14 — diff: 4191 px (0.1992%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-014.png" target="_blank">
+              <img src="sample_file_1/baseline/page-014.png" alt="Baseline page 14">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-014.png" target="_blank">
+              <img src="sample_file_1/output/page-014.png" alt="Output page 14">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-014-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-014-diff.png" alt="Diff page 14">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 15 — diff: 4133 px (0.1965%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-015.png" target="_blank">
+              <img src="sample_file_1/baseline/page-015.png" alt="Baseline page 15">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-015.png" target="_blank">
+              <img src="sample_file_1/output/page-015.png" alt="Output page 15">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-015-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-015-diff.png" alt="Diff page 15">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 16 — diff: 4280 px (0.2034%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-016.png" target="_blank">
+              <img src="sample_file_1/baseline/page-016.png" alt="Baseline page 16">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-016.png" target="_blank">
+              <img src="sample_file_1/output/page-016.png" alt="Output page 16">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-016-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-016-diff.png" alt="Diff page 16">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 17 — diff: 1256 px (0.0597%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-017.png" target="_blank">
+              <img src="sample_file_1/baseline/page-017.png" alt="Baseline page 17">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-017.png" target="_blank">
+              <img src="sample_file_1/output/page-017.png" alt="Output page 17">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-017-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-017-diff.png" alt="Diff page 17">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 18 — diff: 1173 px (0.0558%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-018.png" target="_blank">
+              <img src="sample_file_1/baseline/page-018.png" alt="Baseline page 18">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-018.png" target="_blank">
+              <img src="sample_file_1/output/page-018.png" alt="Output page 18">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-018-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-018-diff.png" alt="Diff page 18">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 19 — diff: 1295 px (0.0616%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-019.png" target="_blank">
+              <img src="sample_file_1/baseline/page-019.png" alt="Baseline page 19">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-019.png" target="_blank">
+              <img src="sample_file_1/output/page-019.png" alt="Output page 19">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-019-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-019-diff.png" alt="Diff page 19">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 20 — diff: 1371 px (0.0652%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-020.png" target="_blank">
+              <img src="sample_file_1/baseline/page-020.png" alt="Baseline page 20">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-020.png" target="_blank">
+              <img src="sample_file_1/output/page-020.png" alt="Output page 20">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-020-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-020-diff.png" alt="Diff page 20">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 21 — diff: 1267 px (0.0602%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-021.png" target="_blank">
+              <img src="sample_file_1/baseline/page-021.png" alt="Baseline page 21">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-021.png" target="_blank">
+              <img src="sample_file_1/output/page-021.png" alt="Output page 21">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-021-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-021-diff.png" alt="Diff page 21">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 22 — diff: 1299 px (0.0617%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-022.png" target="_blank">
+              <img src="sample_file_1/baseline/page-022.png" alt="Baseline page 22">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-022.png" target="_blank">
+              <img src="sample_file_1/output/page-022.png" alt="Output page 22">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-022-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-022-diff.png" alt="Diff page 22">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 23 — diff: 1279 px (0.0608%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-023.png" target="_blank">
+              <img src="sample_file_1/baseline/page-023.png" alt="Baseline page 23">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-023.png" target="_blank">
+              <img src="sample_file_1/output/page-023.png" alt="Output page 23">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-023-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-023-diff.png" alt="Diff page 23">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 24 — diff: 3509 px (0.1668%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_1/baseline/page-024.png" target="_blank">
+              <img src="sample_file_1/baseline/page-024.png" alt="Baseline page 24">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_1/output/page-024.png" target="_blank">
+              <img src="sample_file_1/output/page-024.png" alt="Output page 24">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_1/diff/page-024-diff.png" target="_blank">
+              <img src="sample_file_1/diff/page-024-diff.png" alt="Diff page 24">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+      </section>
+    
+      <section class="pair">
+        <h3>sample_file_2 — <span class="fail">FAIL</span></h3>
+        <div class="muted">sample_file_2_Baseline.pdf vs sample_file_2_Output.pdf</div>
+        
+      <div class="meta">
+        <div><b>Rotation mismatches:</b> None</div>
+        <div><b>Bookmark diff:</b> baseline=1, output=1,
+          missingTitles=0, extraTitles=0
+        </div>
+      </div>
+    
+        
+        <div class="page">
+          <h4>Page 1 — diff: 26849 px (0.9862%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_2/baseline/page-001.png" target="_blank">
+              <img src="sample_file_2/baseline/page-001.png" alt="Baseline page 1">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_2/output/page-001.png" target="_blank">
+              <img src="sample_file_2/output/page-001.png" alt="Output page 1">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_2/diff/page-001-diff.png" target="_blank">
+              <img src="sample_file_2/diff/page-001-diff.png" alt="Diff page 1">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 2 — diff: 38570 px (0.9167%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_2/baseline/page-002.png" target="_blank">
+              <img src="sample_file_2/baseline/page-002.png" alt="Baseline page 2">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_2/output/page-002.png" target="_blank">
+              <img src="sample_file_2/output/page-002.png" alt="Output page 2">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_2/diff/page-002-diff.png" target="_blank">
+              <img src="sample_file_2/diff/page-002-diff.png" alt="Diff page 2">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 3 — diff: 42639 px (1.0134%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_2/baseline/page-003.png" target="_blank">
+              <img src="sample_file_2/baseline/page-003.png" alt="Baseline page 3">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_2/output/page-003.png" target="_blank">
+              <img src="sample_file_2/output/page-003.png" alt="Output page 3">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_2/diff/page-003-diff.png" target="_blank">
+              <img src="sample_file_2/diff/page-003-diff.png" alt="Diff page 3">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 4 — diff: 56579 px (1.3447%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_2/baseline/page-004.png" target="_blank">
+              <img src="sample_file_2/baseline/page-004.png" alt="Baseline page 4">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_2/output/page-004.png" target="_blank">
+              <img src="sample_file_2/output/page-004.png" alt="Output page 4">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_2/diff/page-004-diff.png" target="_blank">
+              <img src="sample_file_2/diff/page-004-diff.png" alt="Diff page 4">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+        <div class="page">
+          <h4>Page 5 — diff: 76614 px (2.8141%)</h4>
+          <div class="thumbs">
+            <a href="sample_file_2/baseline/page-005.png" target="_blank">
+              <img src="sample_file_2/baseline/page-005.png" alt="Baseline page 5">
+              <div class="cap">Baseline</div>
+            </a>
+            <a href="sample_file_2/output/page-005.png" target="_blank">
+              <img src="sample_file_2/output/page-005.png" alt="Output page 5">
+              <div class="cap">Output</div>
+            </a>
+            <a href="sample_file_2/diff/page-005-diff.png" target="_blank">
+              <img src="sample_file_2/diff/page-005-diff.png" alt="Diff page 5">
+              <div class="cap">Diff</div>
+            </a>
+          </div>
+        </div>
+      
+      </section>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "qa-automation-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:ci": "playwright test --reporter=line",
+    "report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.0",
+    "@types/pngjs": "^6.0.5",
+    "canvas": "^3.2.1",
+    "eslint": "^9.39.1",
+    "node-poppler": "^9.1.1",
+    "pdfjs-dist": "^5.4.624",
+    "pixelmatch": "^7.1.0",
+    "playwright": "^1.57.0",
+    "pngjs": "^7.0.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
+  }
+}
