@@ -1,13 +1,15 @@
 name: PDF Visual Compare
 
 on:
-  push:
   pull_request:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  pdf-compare:
+  pdf-visual-compare:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -19,7 +21,7 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install system deps (Poppler)
+      - name: Install Poppler (pdftoppm)
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
@@ -34,7 +36,7 @@ jobs:
       - name: Run PDF visual comparison
         run: npx playwright test tests/pdf-visual/pdf-compare.spec.ts
 
-      - name: Upload HTML report + run artifacts
+      - name: Upload run artifacts + report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -42,4 +44,5 @@ jobs:
           path: |
             artifacts/runs
             playwright-report
+            test-results
           if-no-files-found: warn
