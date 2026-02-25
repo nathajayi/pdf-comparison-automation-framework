@@ -21,8 +21,6 @@ function buildPairs(): PairConfig[] {
   const baselineFiles = listPdfFiles(BASELINE_DIR);
   const outputFiles = listPdfFiles(OUTPUT_DIR);
 
-  // Expect naming like: sample_file_1_Baseline.pdf and sample_file_1_Output.pdf
-  // We'll match by stripping _Baseline/_Output.
   const normalize = (p: string) =>
     path.basename(p)
       .replace(/_Baseline\.pdf$/i, "")
@@ -38,11 +36,11 @@ function buildPairs(): PairConfig[] {
     if (!b) continue;
 
     pairs.push({
-      pairName: key, // nice readable name
+      pairName: key,
       baselinePdfPath: b,
       outputPdfPath: o,
-      maxDiffPercent: 0,          // strict. adjust if you see anti-alias noise
-      pixelmatchThreshold: 0.1,   // sensitivity
+      maxDiffPercent: 0,  
+      pixelmatchThreshold: 0.1, 
     });
   }
 
@@ -70,7 +68,6 @@ test.describe("PDF visual comparison", () => {
       const result = await comparePdfPair(pair, runRootDir);
       results.push(result);
 
-      // Attach pair JSON + key images to Playwright report (nice bonus)
       const pairJsonPath = path.join(runRootDir, pair.pairName, "pair-result.json");
       fs.writeFileSync(pairJsonPath, JSON.stringify(result, null, 2), "utf-8");
       await testInfo.attach(`${pair.pairName}-result.json`, {
@@ -79,7 +76,7 @@ test.describe("PDF visual comparison", () => {
       });
 
       for (const p of result.pageDiffs ?? []) {
-        // p.baselineImage is relative to run root; resolve it
+    
         const baseImg = path.join(runRootDir, p.baselineImage);
         const outImg = path.join(runRootDir, p.outputImage);
         const diffImg = path.join(runRootDir, p.diffImage);
@@ -104,7 +101,6 @@ test.describe("PDF visual comparison", () => {
     const reportPath = path.join(runRootDir, "report.html");
     await testInfo.attach("pdf-visual-report.html", { path: reportPath, contentType: "text/html" });
 
-    // Fail the test if any pair FAILs (so CI clearly shows red/green)
     const failed = results.filter((r: any) => r.overall === "FAIL");
     expect(failed, `Some PDF pairs failed. Open: ${reportPath}`).toHaveLength(0);
   });

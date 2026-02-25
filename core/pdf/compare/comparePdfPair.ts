@@ -9,12 +9,10 @@ export type PairConfig = {
   baselinePdfPath: string;
   outputPdfPath: string;
 
-  // Visual diff rule
-  maxDiffPercent?: number; // default 0
-  pixelmatchThreshold?: number; // default 0.1
+  maxDiffPercent?: number;
+  pixelmatchThreshold?: number;
 
-  // Rendering
-  renderDpi?: number; // default 150
+  renderDpi?: number; 
 };
 
 export type PageDiff = {
@@ -23,7 +21,7 @@ export type PageDiff = {
   diffPercent: number;
   sameDimensions: boolean;
 
-  baselineImage: string; // relative to run root
+  baselineImage: string;
   outputImage: string;
   diffImage: string;
 };
@@ -41,12 +39,10 @@ export type PairResult = {
   pagesWithDifferences: number[];
   pageDiffs: PageDiff[];
 
-  // metadata checks
   rotationMismatches: Array<{ pageNumber: number; baselineRotate: number; outputRotate: number }>;
   bookmarkDiff: {
     baselineCount: number;
     outputCount: number;
-    // best-effort: titles only
     missingTitles: string[];
     extraTitles: string[];
   };
@@ -74,7 +70,6 @@ export async function comparePdfPair(cfg: PairConfig, runRootDir: string): Promi
   ensureDir(outputImgDir);
   ensureDir(diffImgDir);
 
-  // Metadata first
   const baselineMeta = await getPdfMetadata(cfg.baselinePdfPath);
   const outputMeta = await getPdfMetadata(cfg.outputPdfPath);
 
@@ -86,7 +81,6 @@ export async function comparePdfPair(cfg: PairConfig, runRootDir: string): Promi
     if (bR !== oR) rotationMismatches.push({ pageNumber: i + 1, baselineRotate: bR, outputRotate: oR });
   }
 
-  // bookmark titles best-effort diff (titles only)
   const baselineTitles = baselineMeta.outlineTitles;
   const outputTitles = outputMeta.outlineTitles;
 
@@ -96,7 +90,6 @@ export async function comparePdfPair(cfg: PairConfig, runRootDir: string): Promi
   const missingTitles = baselineTitles.filter(t => !outputSet.has(t));
   const extraTitles = outputTitles.filter(t => !baselineSet.has(t));
 
-  // Render to images
   const baselineRender = await renderPdfToPng(
   cfg.baselinePdfPath,
   baselineImgDir,
@@ -140,16 +133,12 @@ const outputRender = await renderPdfToPng(
     });
   }
 
-  // Page count mismatch counts as failure
   const pageCountMismatch = baselinePageCount !== outputPageCount;
 
-  // rotation mismatch counts as failure
   const rotationMismatch = rotationMismatches.length > 0;
 
-  // bookmark mismatch counts as failure (best-effort)
   const bookmarkMismatch = missingTitles.length > 0 || extraTitles.length > 0;
 
-  // any visual diffs counts as failure
   const visualMismatch = pagesWithDifferences.length > 0;
 
   const overall: "PASS" | "FAIL" =

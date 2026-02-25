@@ -4,7 +4,7 @@ import pixelmatch from "pixelmatch";
 
 export type ImageDiffResult = {
   diffPixels: number;
-  diffPercent: number; // 0..100
+  diffPercent: number; 
   sameDimensions: boolean;
   width: number;
   height: number;
@@ -14,7 +14,7 @@ export async function comparePng(
   baselinePngPath: string,
   outputPngPath: string,
   diffPngPath: string,
-  options?: { threshold?: number } // pixelmatch threshold (0..1). default 0.1
+  options?: { threshold?: number }
 ): Promise<ImageDiffResult> {
   const threshold = options?.threshold ?? 0.1;
 
@@ -23,14 +23,12 @@ export async function comparePng(
 
   const sameDimensions = baseline.width === output.width && baseline.height === output.height;
 
-  // If dimensions differ, still compute diff on min area and mark mismatch.
   const width = Math.min(baseline.width, output.width);
   const height = Math.min(baseline.height, output.height);
 
   const b = new PNG({ width, height });
   const o = new PNG({ width, height });
 
-  // copy pixels into cropped buffers
   PNG.bitblt(baseline, b, 0, 0, width, height, 0, 0);
   PNG.bitblt(output, o, 0, 0, width, height, 0, 0);
 

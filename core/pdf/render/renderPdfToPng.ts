@@ -3,8 +3,8 @@ import path from "path";
 import { Poppler } from "node-poppler";
 
 export type RenderOptions = {
-  dpi?: number;       // default 150
-  maxPages?: number;  // default 500
+  dpi?: number; 
+  maxPages?: number;
 };
 
 export type RenderResult = {
@@ -39,8 +39,6 @@ export async function renderPdfToPng(
   ensureDir(outDir);
 
   const poppler = new Poppler();
-
-  // Poppler writes files like: <prefix>-1.png, <prefix>-2.png, ...
   const prefix = path.join(outDir, "page");
 
   try {
@@ -48,9 +46,9 @@ export async function renderPdfToPng(
   pngFile: true,
   resolutionXAxis: 150,
   resolutionYAxis: 150,
-} as any); // keep if your typings don’t include these props
+} as any);
   } catch (e: any) {
-    // Make the error actionable (usually PATH / missing poppler)
+    
     throw new Error(
       `Poppler render failed. Ensure 'pdftoppm' is installed and on PATH.\n` +
         `Tried rendering: ${pdfPath}\n` +
@@ -68,7 +66,6 @@ export async function renderPdfToPng(
     );
   }
 
-  // Normalize names to: page-001.png, page-002.png, ...
   const pageImagePaths: string[] = [];
   for (let i = 0; i < generated.length; i++) {
     const src = generated[i];

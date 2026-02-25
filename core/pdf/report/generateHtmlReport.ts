@@ -4,7 +4,7 @@ import path from "path";
 export type RunSummary = {
   runId: string;
   createdAt: string;
-  results: any[]; // PairResult[]
+  results: any[];
 };
 
 function esc(s: string) {

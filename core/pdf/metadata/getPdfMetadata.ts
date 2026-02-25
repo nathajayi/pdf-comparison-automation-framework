@@ -3,10 +3,8 @@ import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 
 export type PdfMetadata = {
   pageCount: number;
-  // rotation per page: 0/90/180/270 (pdfjs rotate is degrees)
   rotations: number[];
-  // outline/bookmarks (best-effort)
-  outlineTitles: string[]; // flattened titles
+  outlineTitles: string[];
 };
 
 export async function getPdfMetadata(pdfPath: string): Promise<PdfMetadata> {
