@@ -16,6 +16,7 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
 
   const rows = summary.results.map((r: any) => {
     const diffPages = r.pagesWithDifferences?.length ? r.pagesWithDifferences.join(", ") : "—";
+    const textCount = r.textDiffs?.length ?? 0;
     return `
       <tr>
         <td>${esc(r.pairName)}</td>
@@ -24,14 +25,32 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
         <td><b class="${r.overall === "PASS" ? "pass" : "fail"}">${r.overall}</b></td>
         <td>${r.baselinePageCount} vs ${r.outputPageCount}</td>
         <td>${esc(diffPages)}</td>
+        <td>${textCount || "—"}</td>
       </tr>
     `;
   }).join("");
 
   const details = summary.results.map((r: any) => {
     const pages = r.pageDiffs ?? [];
-    const pageBlocks = pages.length
-      ? pages.map((p: any) => `
+      // map page numbers to diff objects for quick lookup
+      const textMap: Record<number, any> = {};
+      if (r.textDiffs) {
+        for (const td of r.textDiffs) {
+          textMap[td.pageNumber] = td;
+        }
+      }
+      const pageBlocks = pages.length
+      ? pages.map((p: any) => {
+          const textDiff = textMap[p.pageNumber];
+          const textBlock = textDiff ? `
+            <details class="text-diff">
+              <summary>Text diff</summary>
+              <div class="diff-container">
+                <div class="side"><pre>${esc(textDiff.baselineText)}</pre><div class="cap">Baseline text</div></div>
+                <div class="side"><pre>${esc(textDiff.outputText)}</pre><div class="cap">Output text</div></div>
+              </div>
+            </details>` : "";
+          return `
         <div class="page">
           <h4>Page ${p.pageNumber} — diff: ${p.diffPixels} px (${p.diffPercent}%)</h4>
           <div class="thumbs">
@@ -48,8 +67,10 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
               <div class="cap">Diff</div>
             </a>
           </div>
+          ${textBlock}
         </div>
-      `).join("")
+      `;
+        }).join("")
       : `<div class="muted">No differing pages.</div>`;
 
     const meta = `
@@ -58,6 +79,7 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
         <div><b>Bookmark diff:</b> baseline=${r.bookmarkDiff?.baselineCount ?? 0}, output=${r.bookmarkDiff?.outputCount ?? 0},
           missingTitles=${r.bookmarkDiff?.missingTitles?.length ?? 0}, extraTitles=${r.bookmarkDiff?.extraTitles?.length ?? 0}
         </div>
+        <div><b>Text mismatches:</b> ${r.textDiffs?.length ?? 0}</div>
       </div>
     `;
 
@@ -91,6 +113,10 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
     .cap { font-size: 12px; color: #333; margin-top: 4px; }
     .page { margin-top: 14px; }
     .meta { margin-top: 10px; font-size: 13px; }
+    .text-diff { margin-top: 8px; }
+    .text-diff .diff-container { display: flex; gap: 12px; }
+    .text-diff .side { flex: 1; border: 1px solid #ddd; padding: 6px; overflow-x: auto; background: #f9f9f9; }
+    .text-diff pre { white-space: pre-wrap; word-wrap: break-word; font-size: 12px; }
   </style>
 </head>
 <body>
@@ -107,6 +133,7 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
         <th>Result</th>
         <th>Page Count</th>
         <th>Pages with Diffs</th>
+        <th>Text diffs</th>
       </tr>
     </thead>
     <tbody>${rows}</tbody>

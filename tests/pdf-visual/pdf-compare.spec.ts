@@ -85,6 +85,18 @@ test.describe("PDF visual comparison", () => {
         if (fs.existsSync(outImg)) await testInfo.attach(`${pair.pairName}-page-${p.pageNumber}-output.png`, { path: outImg, contentType: "image/png" });
         if (fs.existsSync(diffImg)) await testInfo.attach(`${pair.pairName}-page-${p.pageNumber}-diff.png`, { path: diffImg, contentType: "image/png" });
       }
+
+      // attach text diffs if any
+      if (result.textDiffs) {
+        for (const t of result.textDiffs) {
+          const txtPath = path.join(runRootDir, pair.pairName, `page-${t.pageNumber}-text-diff.json`);
+          fs.writeFileSync(txtPath, JSON.stringify(t, null, 2), "utf-8");
+          await testInfo.attach(`${pair.pairName}-page-${t.pageNumber}-text-diff.json`, {
+            path: txtPath,
+            contentType: "application/json",
+          });
+        }
+      }
     }
 
     const summary = {

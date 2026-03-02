@@ -26,6 +26,12 @@ export type PageDiff = {
   diffImage: string;
 };
 
+export type TextDiff = {
+  pageNumber: number;
+  baselineText: string;
+  outputText: string;
+};
+
 export type PairResult = {
   pairName: string;
   baselineFileName: string;
@@ -46,6 +52,9 @@ export type PairResult = {
     missingTitles: string[];
     extraTitles: string[];
   };
+
+  // textual differences between baseline and output; only present when pages differ
+  textDiffs?: TextDiff[];
 };
 
 function ensureDir(dir: string) {
@@ -72,6 +81,17 @@ export async function comparePdfPair(cfg: PairConfig, runRootDir: string): Promi
 
   const baselineMeta = await getPdfMetadata(cfg.baselinePdfPath);
   const outputMeta = await getPdfMetadata(cfg.outputPdfPath);
+
+  // compare extracted text for each page; metadata now includes pageTexts
+  const textDiffs: TextDiff[] = [];
+  const minPagesForText = Math.min(baselineMeta.pageCount, outputMeta.pageCount);
+  for (let i = 0; i < minPagesForText; i++) {
+    const btxt = baselineMeta.pageTexts[i] ?? "";
+    const otxt = outputMeta.pageTexts[i] ?? "";
+    if (btxt !== otxt) {
+      textDiffs.push({ pageNumber: i + 1, baselineText: btxt, outputText: otxt });
+    }
+  }
 
   const rotationMismatches: PairResult["rotationMismatches"] = [];
   const minPagesForRotation = Math.min(baselineMeta.pageCount, outputMeta.pageCount);
@@ -141,8 +161,10 @@ const outputRender = await renderPdfToPng(
 
   const visualMismatch = pagesWithDifferences.length > 0;
 
+  const textMismatch = textDiffs.length > 0;
+
   const overall: "PASS" | "FAIL" =
-    (pageCountMismatch || rotationMismatch || bookmarkMismatch || visualMismatch) ? "FAIL" : "PASS";
+    (pageCountMismatch || rotationMismatch || bookmarkMismatch || visualMismatch || textMismatch) ? "FAIL" : "PASS";
 
   return {
     pairName: cfg.pairName,
@@ -160,5 +182,6 @@ const outputRender = await renderPdfToPng(
       missingTitles,
       extraTitles,
     },
+    textDiffs: textDiffs.length ? textDiffs : undefined,
   };
 }

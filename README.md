@@ -189,7 +189,7 @@ Result: FAIL
 
 - Potential improvements include:
 - Configurable ignore regions for dynamic content
-- Semantic text comparison in addition to visual diffing
+- Semantic text comparison in addition to visual diffing (new feature)
 - CI artifact publishing
 - Baseline approval workflows
 - PDF metadata normalization

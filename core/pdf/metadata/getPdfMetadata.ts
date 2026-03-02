@@ -5,6 +5,8 @@ export type PdfMetadata = {
   pageCount: number;
   rotations: number[];
   outlineTitles: string[];
+  /** text extracted from each page, normalized to a single string */
+  pageTexts: string[];
 };
 
 export async function getPdfMetadata(pdfPath: string): Promise<PdfMetadata> {
@@ -32,5 +34,14 @@ export async function getPdfMetadata(pdfPath: string): Promise<PdfMetadata> {
   };
   if (Array.isArray(outline)) walk(outline);
 
-  return { pageCount, rotations, outlineTitles };
+  // extract raw text from each page
+  const pageTexts: string[] = [];
+  for (let pageNum = 1; pageNum <= pageCount; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+    const content = await page.getTextContent();
+    const items = content.items.map((i: any) => i.str || "");
+    pageTexts.push(items.join(" "));
+  }
+
+  return { pageCount, rotations, outlineTitles, pageTexts };
 }
