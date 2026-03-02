@@ -32,7 +32,6 @@ export function generateHtmlReport(runRootDir: string, summary: RunSummary) {
 
   const details = summary.results.map((r: any) => {
     const pages = r.pageDiffs ?? [];
-      // map page numbers to diff objects for quick lookup
       const textMap: Record<number, any> = {};
       if (r.textDiffs) {
         for (const td of r.textDiffs) {

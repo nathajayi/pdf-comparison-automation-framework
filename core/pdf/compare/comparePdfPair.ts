@@ -113,13 +113,13 @@ export async function comparePdfPair(cfg: PairConfig, runRootDir: string): Promi
   const baselineRender = await renderPdfToPng(
   cfg.baselinePdfPath,
   baselineImgDir,
-  { dpi: cfg.renderDpi }
+  { dpi: renderDpi }
 );
 
 const outputRender = await renderPdfToPng(
   cfg.outputPdfPath,
   outputImgDir,
-  { dpi: cfg.renderDpi }
+  { dpi: renderDpi }
 );
 
   const baselinePageCount = baselineRender.pageCount;
