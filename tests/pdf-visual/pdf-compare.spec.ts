@@ -47,6 +47,10 @@ function buildPairs(): PairConfig[] {
   return pairs;
 }
 
+let allResults: any[] = [];
+let testRunId: string;
+let testRunRootDir: string;
+
 function makeRunId() {
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
   const rnd = Math.random().toString(16).slice(2, 8);
@@ -54,66 +58,87 @@ function makeRunId() {
 }
 
 test.describe("PDF visual comparison", () => {
-  test("compare baseline vs output PDF pairs and generate report", async ({}, testInfo) => {
-    const pairs = buildPairs();
-    expect(pairs.length).toBeGreaterThan(0);
-
+  test.beforeAll(() => {
     fs.mkdirSync(RUNS_DIR, { recursive: true });
-    const runId = makeRunId();
-    const runRootDir = path.join(RUNS_DIR, runId);
-    fs.mkdirSync(runRootDir, { recursive: true });
+    testRunId = makeRunId();
+    testRunRootDir = path.join(RUNS_DIR, testRunId);
+    fs.mkdirSync(testRunRootDir, { recursive: true });
+  });
 
-    const results = [];
-    for (const pair of pairs) {
-      const result = await comparePdfPair(pair, runRootDir);
-      results.push(result);
+  const pairs = buildPairs();
+  
+  test.beforeAll(() => {
+    if (pairs.length === 0) {
+      throw new Error("No PDF pairs found in baseline and output directories.");
+    }
+  });
 
-      const pairJsonPath = path.join(runRootDir, pair.pairName, "pair-result.json");
+  // create a separate test for each pair
+  for (const pair of pairs) {
+    test(`compare ${pair.pairName}`, async ({}, testInfo) => {
+      const result = await comparePdfPair(pair, testRunRootDir);
+      allResults.push(result);
+
+      const pairJsonPath = path.join(testRunRootDir, pair.pairName, "pair-result.json");
       fs.writeFileSync(pairJsonPath, JSON.stringify(result, null, 2), "utf-8");
-      await testInfo.attach(`${pair.pairName}-result.json`, {
+      await testInfo.attach(`result.json`, {
         path: pairJsonPath,
         contentType: "application/json",
       });
 
       for (const p of result.pageDiffs ?? []) {
-    
-        const baseImg = path.join(runRootDir, p.baselineImage);
-        const outImg = path.join(runRootDir, p.outputImage);
-        const diffImg = path.join(runRootDir, p.diffImage);
+        const baseImg = path.join(testRunRootDir, p.baselineImage);
+        const outImg = path.join(testRunRootDir, p.outputImage);
+        const diffImg = path.join(testRunRootDir, p.diffImage);
 
-        if (fs.existsSync(baseImg)) await testInfo.attach(`${pair.pairName}-page-${p.pageNumber}-baseline.png`, { path: baseImg, contentType: "image/png" });
-        if (fs.existsSync(outImg)) await testInfo.attach(`${pair.pairName}-page-${p.pageNumber}-output.png`, { path: outImg, contentType: "image/png" });
-        if (fs.existsSync(diffImg)) await testInfo.attach(`${pair.pairName}-page-${p.pageNumber}-diff.png`, { path: diffImg, contentType: "image/png" });
+        if (fs.existsSync(baseImg)) {
+          await testInfo.attach(`page-${p.pageNumber}-baseline.png`, {
+            path: baseImg,
+            contentType: "image/png",
+          });
+        }
+        if (fs.existsSync(outImg)) {
+          await testInfo.attach(`page-${p.pageNumber}-output.png`, {
+            path: outImg,
+            contentType: "image/png",
+          });
+        }
+        if (fs.existsSync(diffImg)) {
+          await testInfo.attach(`page-${p.pageNumber}-diff.png`, {
+            path: diffImg,
+            contentType: "image/png",
+          });
+        }
       }
 
       // attach text diffs if any
       if (result.textDiffs) {
         for (const t of result.textDiffs) {
-          const txtPath = path.join(runRootDir, pair.pairName, `page-${t.pageNumber}-text-diff.json`);
+          const txtPath = path.join(testRunRootDir, pair.pairName, `page-${t.pageNumber}-text-diff.json`);
           fs.writeFileSync(txtPath, JSON.stringify(t, null, 2), "utf-8");
-          await testInfo.attach(`${pair.pairName}-page-${t.pageNumber}-text-diff.json`, {
+          await testInfo.attach(`page-${t.pageNumber}-text-diff.json`, {
             path: txtPath,
             contentType: "application/json",
           });
         }
       }
-    }
 
+      // assert this pair passed
+      expect(result.overall, `PDF pair "${pair.pairName}" failed`).toBe("PASS");
+    });
+  }
+
+  test.afterAll(async () => {
+    // generate unified report after all tests complete
     const summary = {
-      runId,
+      runId: testRunId,
       createdAt: new Date().toISOString(),
-      results,
+      results: allResults,
     };
 
-    const summaryPath = path.join(runRootDir, "summary.json");
+    const summaryPath = path.join(testRunRootDir, "summary.json");
     fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2), "utf-8");
-    await testInfo.attach("summary.json", { path: summaryPath, contentType: "application/json" });
 
-    generateHtmlReport(runRootDir, summary);
-    const reportPath = path.join(runRootDir, "report.html");
-    await testInfo.attach("pdf-visual-report.html", { path: reportPath, contentType: "text/html" });
-
-    const failed = results.filter((r: any) => r.overall === "FAIL");
-    expect(failed, `Some PDF pairs failed. Open: ${reportPath}`).toHaveLength(0);
+    generateHtmlReport(testRunRootDir, summary);
   });
 });
